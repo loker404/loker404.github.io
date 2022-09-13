@@ -1,0 +1,156 @@
+
+<!-- saved from url=(0024)https://katagobooks.org/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>KataGo Opening Books</title>
+<link rel="stylesheet" href="./KataGo Opening Books_files/primer.css">
+<link rel="stylesheet" href="./KataGo Opening Books_files/octicons.min.css">
+<link rel="stylesheet" href="./KataGo Opening Books_files/bulma.min.css">
+<link rel="stylesheet" href="./KataGo Opening Books_files/home.css">
+<style type="text/css"></style></head>
+<body>
+<div class="content">
+<h1 class="title is-1" id="katago-opening-books"> KataGo Opening Books </h1>
+<p>
+Here are opening books computed by <a href="https://katagotraining.org/">KataGo</a> for small boards! These books have full symmetry and transposition handling, including ko and superko-aware handling of transpositions, and as of 2021 hopefully are the most thorough and high-quality opening analyses for these board sizes ever published. They are possibly approaching optimal for 7x7, and likely enumerating the vast majority of optimal opening lines for 8x8. More books may be added in the future.
+</p>
+<p>
+Thanks again to everyone who has made KataGo and this research possible, and especially to those people who provided feedback on this work!
+</p>
+<p>
+<strong><a href="https://katagobooks.org/book7tt/root/root.html">7x7 Book, Tromp-Taylor Rules, Komi 9 (last updated 2021-08-06)</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://katagobooks.org/downloads/book7ttb40s9435-20210806.tar.gz">Download for viewing offline</a></strong> <br>
+<strong><a href="https://katagobooks.org/book7jp/root/root.html">7x7 Book, Japanese-like Rules, Komi 8 (last updated 2021-08-06)</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://katagobooks.org/downloads/book7jpb40s9435-20210806.tar.gz">Download for viewing offline</a></strong> <br>
+<strong><a href="https://katagobooks.org/book8tt/root/root.html">8x8 Book, Tromp-Taylor Rules, Komi 10 (last updated 2021-11-14)</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://katagobooks.org/downloads/book8tt40s9854-20211114.tar.gz">Download for viewing offline</a></strong> <br>
+<strong><a href="https://katagobooks.org/book8jp/root/root.html">8x8 Book, Japanese-like Rules, Komi 9 (last updated 2021-11-14)</a></strong> &nbsp;&nbsp;&nbsp;&nbsp;<strong><a href="https://katagobooks.org/downloads/book8jp40s9854-20211114.tar.gz">Download for viewing offline</a></strong> <br>
+</p>
+<hr>
+<p class="slight-bold">
+If you enjoy this and would like to support KataGo's improvement and research, KataGo is continuing to train at <a href="https://katagotraining.org/">katagotraining.org</a> via volunteer crowdsourced computation. The number of contributors is small enough that additional people and GPUs can make a significant difference - if you are interested, please consider helping out!
+</p>
+<hr>
+<h3>For Questions</h3>
+<p>
+If you have questions about these books, interesting discoveries, refutations of the moves, questions about KataGo or how to help contribute, or anything else to ask or share - please feel free to drop in to <a href="https://discord.gg/bqkZAz3">Discord chat</a>, leave a message/issue on <a href="https://github.com/lightvector/KataGo">GitHub</a>, or otherwise get in touch - would love to hear more.
+</p>
+<h3>Rules and Komi Used</h3>
+<p>
+<a href="https://tromp.github.io/go.html">Tromp-Taylor rules</a>: These are strategically the same as Chinese rules, except for using positional superko instead of simple ko, and a few rules beasts like <a href="https://senseis.xmp.net/?1EyeFlaw">"1-eye-flaw"</a>. So far nothing important on 7x7 appears to depend on the choice of superko or be affected by such differences, so for all practical purposes this is a Chinese rules opening book too.<br>
+</p>
+<p>
+<a href="https://lightvector.github.io/KataGo/rules.html">Japanese-like rules</a>: Although the full Japanese rules are difficult to implement for computer programs, KataGo achieves a reasonably close match, including handling of points in seki, bent-four-in-the-corner, needing to protect a final ko, etc. One mild difference is that passing without filling all dame is permissible in KataGo's rules (as on many online servers). This almost never affects the strategic outcome. Aside from that, a few genuine strategic differences are known but they are uncommon.
+</p>
+<p>
+<span class="has-text-weight-semibold">Komi:</span> For each ruleset, we use the komi believed to be optimal for that size. Optimal komi for 7x7 appears to be 9 in area-scoring rules like Tromp-Taylor or Chinese rules, and 8 in Japanese scoring rules, and from smaller experiments also does not seem to depend on things like the choice of ko or superko rule. Optimal komi for 8x8 similarly appears to be 10 in area-scoring rules and 9 in Japanese scoring rules.
+</p>
+<hr>
+<h1>Jump To Contents</h1>
+<a href="https://katagobooks.org/#is-7x7-go-solved">Is 7x7 Go Solved?</a> <br>
+<a href="https://katagobooks.org/#how-about-8x8-go">How About 8x8 Go?</a> <br>
+<a href="https://katagobooks.org/#how-these-books-were-generated">How These Books Were Generated</a> <br>
+<a href="https://katagobooks.org/#7x7-highlights-and-discoveries">7x7 Highlights and Discoveries</a> <br>
+<a href="https://katagobooks.org/#8x8-highlights-and-discoveries">8x8 Highlights and Discoveries</a> <br>
+<hr>
+<h1 id="is-7x7-go-solved">Is 7x7 Go Solved? <a href="https://katagobooks.org/#is-7x7-go-solved"><span class="octicon octicon-link"></span></a></h1>
+<p>
+<span class="has-text-weight-semibold">In a rigorous mathematical sense, the above books do NOT "solve" 7x7 Go, since even if the main lines luckily all turn out to be exactly optimal, there is not a proof of this, and the books are of course astronomically far from being exhaustive.</span>
+</p>
+<p>
+There are almost certainly multiple mistaken evaluations in the book and/or suboptimal move choices. One can find many positions where KataGo itself indicates obvious uncertainty, such as reporting winrates that are far from any of 0%, 50%, or 100%.
+</p>
+<p>
+<span class="has-text-weight-semibold">However, despite no rigorous proof, we do suspect that <i>most</i> of the preferred lines of the above books are optimal, maybe even almost all.</span>
+</p>
+<p>
+Surprisingly, at basically no point during the book-building process did KataGo substantially change its mind about any of the main lines branching off in the first 5-7 moves. Even as the book grew 5x, 10x, 50x, the results have been very stable. The various mistakes and blind spots that the book *has* found and corrected over real-time KataGo have so far been limited to variations not affecting the top-level results, such as side variations after mistakes or dispreferred moves by both sides, or deep variations within a main line for which there were other working alternatives.
+</p>
+<p>
+With an exponentially large space it is hard to eliminate all mistakes, and there <i>is</i> still some chance of a significant mistake somewhere, but we hope we are not too far from the point where a bot that always played according to the preferred move from the book until reaching a leaf, and then finished the game with a sufficiently powerful search at runtime, would be <i>literally</i> unbeatable.
+</p>
+<p>
+<span class="has-text-weight-semibold">If you find any large mistakes in these books, particularly ones that could affect the value of the main lines or immediate side variations, that would be fascinating material to study, please let us know!</span>
+</p>
+<p>
+Note that all scores in the books should be considered <span class="has-text-weight-semibold">approximate</span>. Scores should be a decently good prediction for the true score when the difference is not too large, but they are NOT expected to always be perfect. They are very often not almost-an-integer, reflecting this uncertainty, and it is entirely expected that occasionally moves might only be win-loss-draw-optimal, rather than score-optimal. Despite this, KataGo appears to do a good job differentiating between moves of different scores anyways, including finding many 1-and-2-point improvements over earlier human-driven 7x7 solution attempts.
+</p>
+<h1 id="how-about-8x8-go">How About 8x8 Go? <a href="https://katagobooks.org/#how-about-8x8-go"><span class="octicon octicon-link"></span></a></h1>
+<p>
+On 8x8, the number of optimal lines seems to be vastly larger than on 7x7, and correspondingly the confidence with which we are able to enumerate these lines is much lower than. Unlike 7x7, where almost every optimal opening line has been seemingly identified and explored deeply, and almost every deviation at any point is confidently rejected, on 8x8 it is not hard to find variations that KataGo is *not* confident in, particularly when repeatedly following moves that are evaluated as likely optimal but are second, third, fourth, etc choice, or moves that are unusual and "bad shape" and require knife-edge precision followups to justify why they still barely work.
+</p>
+<p>
+Similarly when generating the 8x8 books, among the hundreds of important variations in the first 5-10 ply, several times KataGo changed its mind on some of these variations, discovering a believed-losing move was actually also optimal, or discovering that an apparent drawing line with 50% winrate and equal score after millions of visits was instead a loss. A small fraction of branches may still be wrong in such a manner. By contrast, this almost never happened on 7x7.
+</p>
+<p>
+Despite this, the large majority of lines in the 8x8 books are still probably correct, particularly the lines that follow mostly the first-choice moves and/or moves with high policy prior and natural good shapes. This is particularly the case for the 8x8 Japanese rules book. Due to the finer scoring granularity of Japanese scoring over standard area scoring, there are far fewer optimal lines under Japanese rules, making it much easier to validate them thoroughly. For most lines, the 8x8 Japanese rules book may be not far from the confidence of the 7x7 Tromp-Taylor book at being truly the optimal solution.
+</p>
+<h1 id="how-these-books-were-generated">How These Books Were Generated <a href="https://katagobooks.org/#how-these-books-were-generated"><span class="octicon octicon-link"></span></a></h1>
+<p>
+These books were generated by incrementally growing a tree from the opening position of each board over repeated iterations, in each iteration:
+</p>
+<ul>
+<li> Choosing up to K nodes in the tree to expand, based on stats at each node about the possible moves that are not yet part of the tree.</li>
+<li> For each chosen node in parallel, running a full search to find KataGo's most-preferred move to add to the tree. Moves already in the tree are banned and treated as illegal by the search.</li>
+<li> Then running a quicker search with the new added move also banned, to update the stats about the remaining moves not yet part of the tree.</li>
+</ul>
+<p>
+For the 7x7 books, KataGo generally used about 15000 visits for full search, and about 7500 visits for the quicker search, with wide root noise of 0.10. KataGo performed many thousands of iterations, with K=64 parallel nodes expanded per iteration. Additionally, the 7x7 books for the two rulesets were used to seed each other a few times, each one forced to expand every node the other did, giving much more exploration to the tiny one-point differences that make the difference between a win/loss under each.
+</p>
+<p>
+Overall, the above method of expanding the tree appears to greatly reduce inaccuracies relative to real-time KataGo. Always forcing the search, after picking out its favorite move, to invest many visits into the next best moves, forces exploration of moves that would normally be searched only shallowly. This prevents surprising correct lines or refutations from being overlooked.
+KataGo in real-time does have occasional blind spots on 7x7, usually in the form of failing to see an equally-good move rather than failing to see a strictly-better move, but failing to see a strictly-better move happens rarely too. Where the book is densely expanded, it should do a very good job fixing these errors, and hopefully well enough to make it extremely close to or even exactly optimal in all the main variations.
+</p>
+<h3>Choosing Nodes to Expand</h3>
+<p>
+The way the nodes to expand on each iteration were chosen was by:
+</p>
+<ul>
+<li> Assigning a cost to each edge of the tree. </li>
+<li> Computing the path cost of a node to be the minimum sum of costs needed to reach that node from the root. </li>
+<li> Adding a node-specific additional cost to each node's path cost, to get a final cost. </li>
+<li> Selecting the K nodes with the smallest final cost. </li>
+</ul>
+<p>
+Costs were based on a variety of factors, including the raw policy prior of moves, the current winrate and score of the moves based on the tree so far, the number of moves expanded at a node already, and some crude measures of uncertainty. These were adjusted to give a good balance between getting enough diversity of moves explored and exploring the most important lines deeply.
+</p>
+<p>
+Many manual adjustments to costs were also added to force much deeper analysis of most lines claimed to be optimal by earlier human-published work, or that involved difficult refutations of suboptimal moves, some of which are discussed <a href="https://katagobooks.org/#7x7-highlights-and-discoveries">further down</a>, and especially where KataGo's book did not appear to expand such lines very deeply on its own. Surprisingly, and promisingly as a sign of the accuracy of these opening books, there does not seem to have been any case so far where this deeper forced analysis overturned KataGo's initial judgment and revealed that a rejected line was an improvement over the preferred line. However, it did help sharpen the evaluations of a huge number of side variations (e.g. sharpening a 30% winrate move towards being either a loss or being equally good as the preferred 50% winrate move), and help grow the book deep enough to resolve many tactics in those side variations where KataGo did still have nontrivial blind spots for the book algorithm to correct even though they didn't affect the top-level result.
+</p>
+<h3>Transpositions and Symmetries</h3>
+<p>
+KataGo's book has full symmetry-aware superko-aware transposition handling, using a 256 bit hash.
+</p>
+<p>
+We handle symmetries by hashing the board once for each of the possible 8 orientations and taking the minimum to be the canonical hash. This canonical hash is used to identify and share the same node between different orientations of a position and between different transposed move orderings that reach that position. This includes even move orderings that transpose not to the same position but rather to different orientations of the same position.
+</p>
+<p>
+Edges of the tree keep track of the dihedral symmetry transformation that relates their two endpoints. These transformations are successively composed as you walk the tree, so that the board always is presented in the orientation that is consistent with the path by which you reach a particular node, regardless of what the canonical orientation of that node is.
+</p>
+<p>
+The hash also takes into account a heuristic amount of the history, such that enough of the history is preserved to maintain full superko correctness despite the fact that transpositions are allowed. The heuristic is that the history is cleared any time a move is made such that S + E &gt; 9, where S is the total number of stones in the resulting chain containing the stone and E is the total number of empty spaces in all empty regions bordering that chain (e.g. nearly the whole empty area of the board at the start of the game). This is easily proven to be a lower bound on the length of any possible superko cycle involving that move, so for this heuristic to fail, it requires a superko cycle be quite long and involve the repeated capture of decently large groups (e.g at least 4-5 stones). If there is a beast where a line necessary for correct play violates this bound, I would be interested to know about it.
+</p>
+<h1 id="7x7-highlights-and-discoveries">7x7 Highlights and Discoveries <a href="https://katagobooks.org/#7x7-highlights-and-discoveries"><span class="octicon octicon-link"></span></a></h1>
+<p>
+See <a href="https://katagobooks.org/7x7highlights.html">this page</a> for an overview of some of the most fascinating and fun variations and discoveries from KataGo's 7x7 books, relative to earlier attempts at solving 7x7!
+</p>
+<h1 id="8x8-highlights-and-discoveries">8x8 Highlights and Discoveries <a href="https://katagobooks.org/#8x8-highlights-and-discoveries"><span class="octicon octicon-link"></span></a></h1>
+<p>
+See <a href="https://katagobooks.org/8x8highlights.html">this page</a> for an overview of the main seemingly-optimal variations for 8x8 and a sampling of some of the interesting moves!
+</p>
+<p>
+<a href="https://katagobooks.org/#katago-opening-books">Back to top</a>
+</p>
+</div>
+
+<hr>
+<footer class="footer">
+<div class="container">
+<div class="content has-text-centered">
+<p>
+<strong><a href="https://github.com/lightvector/KataGo">katagotraining.org</a></strong> -
+<strong><a href="https://github.com/lightvector/KataGo">GitHub</a></strong> -
+<strong><a href="https://discord.gg/bqkZAz3">Discord chat</a></strong> <br>
+lightvector at katagotraining dot org <br>
+Copyright 2021 David J Wu ("lightvector"), all rights reserved.
+</p></div>
+</div>
+</footer>
+
+</body></html>

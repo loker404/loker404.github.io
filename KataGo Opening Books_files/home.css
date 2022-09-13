@@ -1,0 +1,82 @@
+
+body {
+  margin:20px;
+  padding-left:10px;
+  padding-right:10px;
+  color:#000000;
+}
+
+.slight-bold {
+  font-weight:500;
+}
+
+a {
+  font-weight:500;
+}
+strong  a {
+  font-weight:700;
+}
+
+a:visited { color:rgb(85, 26, 139) }
+a:active { color:#ff0055 }
+
+.footer {
+  padding:1rem;
+}
+
+.goimage {
+  padding-bottom:1px;
+}
+
+.goimage8 {
+  width: 320px;
+  height: 320px;
+}
+
+.imageAndDesc {
+  display:flex;
+  flex-flow:row;
+  margin-top:15px;
+}
+
+.imageAndDesc .imageAndCaption {
+  flex-shrink:0.0;
+}
+
+.imageAndCaption {
+  display:flex;
+  flex-flow:column;
+  padding-bottom:15px;
+  align-items:flex-start;
+}
+
+.imageAndCaption span {
+  font-size:80%;
+  font-style:italic;
+}
+
+.captionBox {
+  height:1em;
+  width:0;
+}
+.captionBox span {
+  position:absolute;
+}
+
+
+.imageAndDesc p {
+  padding-left:30px;
+  padding-right:20px;
+}
+
+.vspacer {
+  height:0.5em;
+}
+
+.contents.contentstable {
+  margin-top:0.2em;
+  margin-bottom:0px;
+  padding-top:0px;
+  padding-bottom:0px;
+  line-height:normal;
+}
